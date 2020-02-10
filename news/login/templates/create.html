@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block content %}
+	{% if user.is_authenticated %}
+		<p>Welcome {{user.username}},</p>
+		<a href="{% url 'index' %}">Homepage</a>
+		<a href="{% url 'logout' %}">Logout</a>
+		{% else %}
+		<p>Welcome to my website</p>
+		<a href="{% url 'login_url' %}">Login</a>
+		<a href="{% url 'register_url' %}">Register</a>
+	{% endif %}
+	</div>
+	<form method="post">
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" value="Submit">
+	</form>
+{% endblock %}

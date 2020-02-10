@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block content %}
+	{% if user.is_authenticated %}
+		<p>Welcome {{user.username}},</p>
+		<a href="{% url 'index' %}">Homepage</a>
+		<a href="{% url 'logout' %}">Logout</a>
+		{% else %}
+		<p>Welcome to my website</p>
+		<a href="{% url 'login_url' %}">Login</a>
+		<a href="{% url 'register_url' %}">Register</a>
+	{% endif %}
+	</div>
+<form method="POST">
+	{% csrf_token %}
+  First name: <input type="text" name="fname" value="asdasd"><br>
+  <!-- Last name: <input type="text" name="lname" value="asdasd2312"><br> -->
+  <input type="submit" value="Update">
+</form>
+{% endblock %}
